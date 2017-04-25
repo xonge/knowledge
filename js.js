@@ -11,3 +11,10 @@ var img1src = $("#jsb_czq_pic1")[0].src;alert("img1src:"+img1src);
 var img2src = $("#jsb_czq_pic2").attr("src");alert("img2src:"+img2src);
 // 原生js
 var img3src = document.getElementById('jsb_czq_pic3').src;alert("img3src:"+img3src);
+
+// 遍历对象的属性
+var person = {fname: "John", lname: "Doe", age: 25};
+for (x in person) {
+    txt = txt + person[x];
+}
+// 结果：JohnDoe25
