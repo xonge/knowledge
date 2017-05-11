@@ -8,6 +8,8 @@
 
 4. ditto 粘贴板增强 [官网](http://ditto-cp.sourceforge.net/)
 
+5. seer 类似macOS的空格预览软件 [官网](http://1218.io/) [下载地址](https://sourceforge.net/projects/ccseer/?source=typ_redirect)
+
 ### win10 下使用 homestead
 
 #### 让 phpstorm 的按钮能够识别 vagrant up。
