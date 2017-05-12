@@ -62,6 +62,20 @@
     ````
     [参考](http://blog.csdn.net/zhouyan8603/article/details/6825834)
     
+7. 排序
+
+    ````
+    db.col.find({},{"title":1,_id:0}).sort({"likes":-1})
+    ````
+    [参考](http://www.runoob.com/mongodb/mongodb-sort.html)
+    
+8. 字符串转数字
+
+    ````
+    db.mianxiangduixiang.update({'_id':row._id}, {$set: {'id':NumberInt(row.id)}});
+    ````
+    [参考](http://www.111cn.net/database/MongoDB/98387.htm)
+    
 ### 未整理
 
 ````
