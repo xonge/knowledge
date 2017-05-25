@@ -46,3 +46,35 @@
     url.parse('http://www.baidu.com');
     ````
     [参考](http://www.cnblogs.com/whiteMu/p/5983125.html)
+    
+### 文件操作
+
+1. 读取文件方式1
+    
+    ````javascript
+    var rf=require("fs");  
+    var data=rf.readFileSync("test","utf-8");  
+    console.log(data);  
+    console.log("READ FILE SYNC END");
+    ````
+    [打开网址](http://blog.csdn.net/zk437092645/article/details/9231787)
+    
+### 队列
+
+1.  基于redis和cron（node-schedule）
+
+    [打开网址](http://blog.csdn.net/shenlei19911210/article/details/52584884)
+    
+### expressjs
+
+1.  [官网](http://expressjs.com/)
+
+2.  安装expressjs
+
+    ````bash
+    npm install express --save
+    ````
+    
+### 经常使用的包
+
+1. [redis](https://www.npmjs.com/package/redis)
