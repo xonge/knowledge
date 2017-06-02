@@ -78,3 +78,11 @@
 ### 经常使用的包
 
 1. [redis](https://www.npmjs.com/package/redis)
+
+### gzip操作
+
+1. [pako 给字符串加gzip和解gzip](https://www.npmjs.com/package/pako)
+
+### 生成gzip文件
+
+1. [zip-stream 看文档不知道怎么使用 放弃](https://www.npmjs.com/package/zip-stream)

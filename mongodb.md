@@ -73,8 +73,38 @@
 
     ````
     db.mianxiangduixiang.update({'_id':row._id}, {$set: {'id':NumberInt(row.id)}});
+    db.table_name.find({modifedDate:{$type:9}}).forEach(function(x){x.modifiedDate=NumberLong(x.modifiedDate.getTime()/1000);db.table_name.save(x)})
     ````
     [参考](http://www.111cn.net/database/MongoDB/98387.htm)
+    
+9. 删除字段
+
+    ````
+    // 例如要把User表中address字段删除
+    db.User.update({},{$unset:{'address':''}},false, true)
+    ````
+    
+10. 范围查询
+
+    ````
+    db.col.find({likes : {$lt :200, $gt : 100}})
+    ````
+    
+11. 批量更新字段
+
+    ````
+    db.User.find().forEach(
+       function(item){                 
+           db.User.update({"_id":item._id},{"$set":{"LastUpdate":item.CreateAt}},false,true) 
+        }
+    )
+    ````
+    
+12. 建立唯一索引
+
+    ````
+    db.things.ensureIndex({“name”:1},{unique:true})
+    ````
     
 ### 未整理
 
