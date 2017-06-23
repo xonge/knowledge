@@ -16,3 +16,20 @@
     ````
     
     [参考](https://getcomposer.org/doc/00-intro.md#globally)
+    
+### 备份数据库和网站文件
+
+1. 备份数据库和网站文件
+
+    ````bash
+    cd oneinstack
+    ./backup_setup.sh
+    ./backip.sh
+    ````
+    或者使用cron定时备份
+    ````
+    # crontab -l # Examples 
+    0 1 * * * cd ~/oneinstack;./backup.sh  > /dev/null 2>&1 &
+    ````
+
+    [参考：oneinstack官方文档](https://oneinstack.com/install/)
