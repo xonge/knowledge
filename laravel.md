@@ -61,3 +61,50 @@ https://github.com/JeffreyWay/laravel-mix/issues/483
     ````
     
     [参考](http://www.shikezhi.com/html/2015/php_1224/713776.html)
+    
+### 开发环境
+
+#### laradock
+
+1. [github](https://github.com/LaraDock/laradock)
+
+2. [官方文档](http://laradock.io/documentation/#mysql-root-access)
+
+3. 无法连接mysql数据库
+
+    ````
+    docker exec -it [container_id] bash
+    ip addr // 找到当前容器的ip，然后修改.env的DB_HOST
+    ````
+    [issues](https://github.com/laradock/laradock/issues/610)
+  
+4. docker-compose up 无法启动mysql
+
+    ````
+    // 注释掉
+    # build:
+    
+     # context: ./mysql
+      image: mysql:5.7
+       environment:
+        - MYSQL_DATABASE=${MYSQL_DATABASE}
+        - MYSQL_USER=${MYSQL_USER}
+        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # volumes:
+        # - ${DATA_SAVE_PATH}/mysql:/var/lib/mysql
+        # - ./mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      ports:
+        - "${MYSQL_PORT}:3306"
+      networks:
+        - backend
+    ````
+    [issues](https://github.com/laradock/laradock/issues/952)
+    
+    
+### laravel-admin
+1. 创建和model结合的控制器
+
+    ````bash
+    php artisan admin:make UniversityController --model=App\\University
+    ````

@@ -17,3 +17,23 @@
     WHERE p.products_id = s.products_id
     ````
     [stackoverflow](http://stackoverflow.com/questions/14470041/mysql-update-using-sum-result-across-multiple-tables)
+
+
+### 本地连接
+
+````bash
+mysql -uroot -p
+````
+
+### 允许远程连接
+
+1. 赋予权限方法
+
+    ````bash
+    grant all privileges on *.* to 'root'@'%' identified by 'password' with grant option;
+    
+    flush privileges;
+    
+    //centos7.3 oneinstack下通过
+    ````
+    
