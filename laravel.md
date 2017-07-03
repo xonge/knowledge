@@ -108,3 +108,10 @@ https://github.com/JeffreyWay/laravel-mix/issues/483
     ````bash
     php artisan admin:make UniversityController --model=App\\University
     ````
+    
+    
+### 错误
+
+1. php下关于Cannot use a scalar value as an array的解决办法
+    
+    尝试对一维数组进行索引赋值，例如 $arr['ggg'] = 'ggghh';
