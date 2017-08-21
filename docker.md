@@ -68,3 +68,92 @@
     docker ps
     ````
     [写的很好的文章](http://www.centoscn.com/image-text/install/2016/0402/6983.html)
+    
+### laradock
+1. 列出正在运行的容器
+    docker ps
+2. 你也可以使用以下命令查看某项目的容器
+    docker-compose ps
+3. 关闭所有容器
+    docker-compose stop
+4. 停止某个容器
+    docker-compose stop {容器名称}
+5. 删除所有容器
+    docker-compose down
+6. 进入容器 (通过SSH 进入一个运行中的容器)
+    docker-compose exec {container-name} bash
+7. 重建容器
+    docker-compose build workspace php-fpm
+    
+
+0. 安装toolbox:
+    https://www.docker.com/docker-toolbox
+1. 新建 docker-compose.yml:
+    nginx: 
+    	image: nginx:latest
+    	ports: 
+    		- 80:80
+2. docker-machine start default:
+    Host does not exist: "default"
+    解决: docker-machine create --driver virtualbox default
+    参考资料: https://docs.docker.com/machine/get-started/
+3. docker-machine start default
+4. docker-compose up -d
+    出现的问题:
+    ERROR: Couldn't connect to Docker daemon - you might need to run `docker-machine start default`.
+    解决: eval "$(docker-machine env default)"
+    参考: https://github.com/docker/compose/issues/2180
+    found character '\t' that cannot start any token
+    yaml不允许使用tab,只能使用空格
+    参考资料: https://github.com/moraes/config/issues/1
+    等待下载...
+5. docker-machine ip default
+得到一个ip
+6. docker ps
+
+参考: https://lighter.github.io/2016/05/11/from-vagrant-to-docker-how-to-use-docker-for-local-web-development/
+https://lighter.github.io/2016/05/11/from-vagrant-to-docker-how-to-use-docker-for-local-web-development/
+
+# centos7安装docker:(docker官方版本,linux内核必须高于3.1,搬瓦工无法升级内核)
+1. 升级yum:
+    yum update
+2. Add the yum repo:
+    tee /etc/yum.repos.d/docker.repo <<-'EOF'
+    [dockerrepo]
+    name=Docker Repository
+    baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+    enabled=1
+    gpgcheck=1
+    gpgkey=https://yum.dockerproject.org/gpg
+    EOF
+3. 安装:
+    yum install docker-engine
+4. 启动:
+    service docker start
+5. 如果有冲突,需要卸载旧版本:
+    yum list installed|grep docker
+    yum remove docker-selinux.x86_64
+    参考: http://stackoverflow.com/questions/38087016/installing-docker-on-centos7-docker-engine-selinux-conflicts-with-docker-selinu
+# centos7安装docker:(centos官方版本)
+1. 安装:
+    yum install docker
+2. 启动docker服务:
+    systemctl start docker
+3. 开机自动启动:
+    systemctl enable docker
+4. docker daemon &
+    出现错误: Error starting daemon: Error initializing network controller: Error creating default "bridge" network: package not installed
+    
+### docker for mac:
+1. 创建一个nginx的容器并启动:
+        docker run -d -p 81:80 --name webserver3 nginx
+        把本地的80端口映射到81端口
+    2. 查看容器状态:
+        docker ps
+    3. 停止容器:
+        docker stop webserver3
+    4. 启动容器:
+        docker start webserver3
+    5. mysql挂载本地数据库文件:
+        参考: http://blog.csdn.net/qq362228416/article/details/48709813
+        http://www.codesec.net/view/201238.html

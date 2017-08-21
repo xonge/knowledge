@@ -115,3 +115,69 @@ https://github.com/JeffreyWay/laravel-mix/issues/483
 1. php下关于Cannot use a scalar value as an array的解决办法
     
     尝试对一维数组进行索引赋值，例如 $arr['ggg'] = 'ggghh';
+    
+    
+1. 查看当前laravel版本:
+    php artisan --version
+2. 启动laravel内置php服务器:
+    php artisan serve
+3. 下载新版本laravel:
+    laravel new laravel53
+4. 使用 vue.js
+    npm install
+    
+### 代码片段
+1. groupBy:
+    $users = User::orderBy('name', 'desc')
+                    ->groupBy('count')
+                    ->having('count', '>', 100)
+                    ->get();
+   参考：http://stackoverflow.com/questions/22562101/group-by-eloquent-orm
+   
+1. 安装package:
+    composer require lucadegasperi/oauth2-server-laravel
+    
+2. 安装debugbar:
+    composer require barryvdh/laravel-debugbar --dev
+    
+    修改 /app/Providers/AppServiceProvider.php register方法 添加:
+    if ($this->app->environment() == 'local')
+            {
+                $this->app->register('Barryvdh\Debugbar\ServiceProvider');
+            }
+            
+    在 /config/app.php aliases 字段 添加:
+    'Debugbar' => Barryvdh\Debugbar\Facade::class,
+    生成配置文件:
+    php artisan vendor:publish
+    参考:http://oomusou.io/laravel/laravel-debugbar/
+
+
+1. 编辑配置文件:
+    vim /usr/local/etc/proxychains.conf
+    proxychains4 curl http://t66y.com/ 这个可以成功,但是不知道为什么不能安装laravel
+2. 必须走http代理,本身是shadowsocks:
+    DEBUG=proxy kneesocks 1089 1080
+3. 通过代理升级composer:
+    http_proxy=http://localhost:1089 composer self-update
+4. 通过代理安装valet:
+    http_proxy=http://localhost:1089 composer global require laravel/valet
+    
+5. 准备工作:
+    brew install proxychains-ng
+    brew install dnsmasq
+    
+6. 
+    brew update
+    brew install homebrew/php/php70
+    composer global require laravel/valet
+    valet install
+    ping foobar.dev
+    
+7. 
+    valet出现502 bad gateway
+    brew uninstall php70
+    brew list
+    brew untap josegonzalez/homebrew-php
+    brew install homebrew/php/php70 --with-fpm
+    valet restart

@@ -1,0 +1,72 @@
+服务处理命令
+systemctl start mariadb  #启动MariaDB
+systemctl stop mariadb  #停止MariaDB
+systemctl restart mariadb  #重启MariaDB
+systemctl enable mariadb  #设置开机启动
+
+防火墙开放端口
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+systemctl restart firewalld.service
+
+压缩解压缩
+加-c保留原文件
+
+
+Redis使用
+redis-server
+redis-cli
+php 用 predis连接redis服务器
+
+在安装Cobbler和Puppet时需要关闭selinux，但是通常情况下载安装完CentOS7后，默认情况下SElinux是启用状态，
+如下所示：
+查看命令
+sestatus  
+1、如果要临时关闭，可以执行
+setenforce 0  
+2、如果要永久关闭，可以修改配置文件/etc/selinux/config，将SELINU置为disabled。
+
+修改该配置文件也可以执行下面的命令来完成
+[html] view plaincopy  
+sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config  
+修改完成后，保存重启，重启后状态如下：
+[html] view plaincopy  
+[root@rdo ~]# sestatus  
+SELinux status:              
+
+# include /path/to/local.conf
+# include /path/to/other.conf
+
+在Ubuntu14.04安装Redis后，主机连接虚拟机上的Redis时，报异常 
+redis.clients.jedis.exceptions.JedisConnectionException: java.net.ConnectException: Connection refused。但是在虚拟机里面，用redis-cli命令连接redis-server是没问题的。最后发现需要修改redis.conf才能连接，修改如下。
+
+# By default Redis listens for connections from all the network interfaces
+# available on the server. It is possible to listen to just one or multiple
+# interfaces using the "bind" configuration directive, followed by one or
+# more IP addresses.
+#
+# Examples:
+#
+# bind 192.168.1.100 10.0.0.1
+# bind 127.0.0.1
+
+必须注释掉“bind 127.0.0.1”，否则只能在本机上连接Redis，远端不能连接Redis
+
+
+UPDATE user SET Password = password ( 'aaaAAA111' ) WHERE User = 'root' ;
+UPDATE user SET authentication_string=PASSWORD('aaaAAA111') WHERE user='root';
+
+
+FLUSH PRIVILEGES;
+
+
+openssl配置路径
+set OPENSSL_CONF=C:\OpenSSL\bin\openssl.cfg
+不行的话直接环境变量path里加配置路径
+
+req -config C:\OpenSSL\bin\openssl.cnf -new -out server.csr -keyout server.pem
+req -config C:\OpenSSL\bin\openssl.cnf -new -out server.csr
+
+其中openssl.cnf为apache自带的openssl配置文件，引用到该文件的完整路径
+输入两次密码，随便什么密码，然后一直回车，跳过下面的输入
+#签发证书
+openssl rsa -in server.pem -out server.key
