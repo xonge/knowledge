@@ -149,3 +149,45 @@ db.youdianin.distinct('id');
 
 // db.youdianin.stats();
 ````
+
+1. 安装：
+
+    brew install mongodb
+
+2. 启动服务：
+
+    brew services start mongodb
+    
+3. 导出数据：
+    ````
+    mongoexport --db sanshi --collection blog --out blog_2017_04_05.json
+    ````
+    [参考](https://docs.mongodb.com/manual/reference/program/mongoexport/)
+    
+### 
+
+1. 插入数据时候不重复：
+    
+    1. 唯一索引
+        ````
+        collection.createIndex( { "url": 1 }, { unique: true } );
+        ````
+        
+2. 查找：
+
+    [参考](https://docs.mongodb.com/manual/reference/method/cursor.count/)
+    [npm文档](https://www.npmjs.com/package/mongodb)
+    
+### bug
+
+1. Missing expected field "mechanism"
+
+    In Robomongo change in Connection Settings - Authentication - Auth Mechanism from SCRAM-SHA-1 to MONGODB-CR.
+    
+    [参考](http://stackoverflow.com/questions/38484044/robomongo-cant-connect-missing-expected-field)
+
+### 文档
+
+1. [中文文档](http://www.runoob.com/mongodb/mongodb-update.html)
+
+2. [gui下载地址](https://robomongo.org/download)
