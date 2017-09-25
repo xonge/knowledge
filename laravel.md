@@ -181,3 +181,18 @@ https://github.com/JeffreyWay/laravel-mix/issues/483
     brew untap josegonzalez/homebrew-php
     brew install homebrew/php/php70 --with-fpm
     valet restart
+    
+    
+1. config/auth.php里面的的providers字段必须保证都设置了正确的表,或者不用(注释掉)
+
+
+### 包
+
+1. https://github.com/gocanto/user-invitations 邀请用户的包 没什么星
+2. https://github.com/404labfr/laravel-impersonate 模拟其他用户的包 上百的星
+3. https://github.com/cmgmyr/laravel-messenger 单个用户的站内通知包 上千的星
+4. https://github.com/gocanto/places-validation 管理用户提交地理位置的包 上10的星
+5. https://github.com/nahid/talk 实时聊天的包 上百的星 界面不错
+6. https://github.com/vyuldashev/laravel-queue-rabbitmq rabbitmq的驱动包 上百的星
+7. https://github.com/php-amqplib/php-amqplib 消息队列的包 上千的星
+8. https://github.com/kreta/Kreta 领域驱动的微服务生态系统 上百的星 不属于laravel的包
